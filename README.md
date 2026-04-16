@@ -5,6 +5,7 @@ Manage named API libraries, browse available tools, and execute tool calls – a
 
 [![npm version](https://img.shields.io/npm/v/cogenticlink.svg)](https://www.npmjs.com/package/cogenticlink)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Features
 
 - 🔐 **Library management** – store multiple API tokens with optional descriptions.
@@ -45,22 +46,22 @@ You manage libraries with the cogenticlink libraries subcommands – no manual f
 
 ### Library Management
 
-|Command|Description|
-|-|-|
-|cogenticlink libraries|List all libraries (markdown format)|
-|cogenticlink libraries set <name> <token> [description]	|Add or update a library|
-|cogenticlink libraries get <name>|	Show token and description for a library|
-|cogenticlink libraries remove <name>|Delete a library|
-|cogenticlink libraries list|Plain‑text list of libraries (alternative)|
+| Command                                                   | Description                                |
+|-----------------------------------------------------------|--------------------------------------------|
+| cogenticlink libraries                                    | List all libraries (markdown format)       |
+| cogenticlink libraries set \<name\> <token> [description] | Add or update a library                    |
+| cogenticlink libraries get \<name\>                       | 	Show token and description for a library  |
+| cogenticlink libraries remove \<name\>                    | Delete a library                           |
+| cogenticlink libraries list                               | Plain‑text list of libraries (alternative) |
 
-### Tool Operations (all require <library> as first argument)
+### Tool Operations (all require \<library\> as first argument)
 
-|Command|Description|
-|-|-|
-|cogenticlink categories <library>|Fetch all tool categories (JSON)|
-|cogenticlink list <library> <category>|List tools in a category (default: All Tools). Output is Markdown.
-|cogenticlink describe <library> <tool>|Show tool description and input schema (Markdown)
-|cogenticlink call <library> <tool> [parameters]|Execute tool with optional JSON parameters (default {})
+| Command                                             | Description                                                        |
+|-----------------------------------------------------|--------------------------------------------------------------------|
+| cogenticlink categories \<library\>                 | Fetch all tool categories (JSON)                                   |
+| cogenticlink list \<library\> \<category\>          | List tools in a category (default: All Tools). Output is Markdown. |
+| cogenticlink describe \<library\> <tool>            | Show tool description and input schema (Markdown)                  |
+| cogenticlink call \<library\> \<tool\> [parameters] | Execute tool with optional JSON parameters (default {})            |
 
 ### Examples
 
@@ -113,12 +114,12 @@ cogenticlink help call
 
 ## Troubleshooting
 
-|Problem|Solution|
-|-|-|
-|Library not found|Run cogenticlink libraries to see existing names.
-|Invalid token|Re‑set the library with the correct token.
-|Tool not found|Use cogenticlink list <library> to verify the tool name.
-|Invalid JSON in parameters|Ensure parameters are valid JSON (use single quotes around the string).
+| Problem                    | Solution                                                               |
+|----------------------------|------------------------------------------------------------------------|
+| Library not found          | Run `cogenticlink libraries` to see existing names.                    |
+| Invalid token              | Re‑set the library with the correct token.                             |
+| Tool not found             | Use `cogenticlink list \<library\>` to verify the tool name.           |
+| Invalid JSON in parameters | Ensure parameters are valid JSON (use single quotes around the string). |
 
 ## License
 

@@ -58,7 +58,7 @@ You manage libraries with the cogenticlink libraries subcommands – no manual f
 
 | Command                                             | Description                                                        |
 |-----------------------------------------------------|--------------------------------------------------------------------|
-| cogenticlink categories \<library\>                 | Fetch all tool categories (JSON)                                   |
+| csogenticlink categories \<library\>                | Fetch all tool categories (JSON)                                   |
 | cogenticlink list \<library\> \<category\>          | List tools in a category (default: All Tools). Output is Markdown. |
 | cogenticlink describe \<library\> <tool>            | Show tool description and input schema (Markdown)                  |
 | cogenticlink call \<library\> \<tool\> [parameters] | Execute tool with optional JSON parameters (default {})            |
@@ -114,11 +114,11 @@ cogenticlink help call
 
 ## Troubleshooting
 
-| Problem                    | Solution                                                               |
-|----------------------------|------------------------------------------------------------------------|
-| Library not found          | Run `cogenticlink libraries` to see existing names.                    |
-| Invalid token              | Re‑set the library with the correct token.                             |
-| Tool not found             | Use `cogenticlink list \<library\>` to verify the tool name.           |
+| Problem                    | Solution                                                                |
+|----------------------------|-------------------------------------------------------------------------|
+| Library not found          | Run `cogenticlink libraries` to see existing names.                     |
+| Invalid token              | Re‑set the library with the correct token.                              |
+| Tool not found             | Use `cogenticlink list \<library\>` to verify the tool name.            |
 | Invalid JSON in parameters | Ensure parameters are valid JSON (use single quotes around the string). |
 
 ## License

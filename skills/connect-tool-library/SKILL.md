@@ -1,9 +1,9 @@
 ---
 name: connect-tool-library
-description: Interact with remote tool libraries cogenticlink CLI. Use this skill when you need to manage API libraries (tokens), browse available tools, and execute tool calls.
+description: Interact with remote tool libraries via cogenticlink CLI. Use this skill when you need to manage Tool libraries (tokens), browse available tools, and execute tool calls.
 metadata:
   openclaw:
-    homepage: https://www.npmjs.com/package/@cogenticlab/cogenticlink
+    homepage: https://www.npmjs.com/package/cogenticlink
     emoji: 📋
     requires:
       bins:

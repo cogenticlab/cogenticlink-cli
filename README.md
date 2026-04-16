@@ -1,66 +1,133 @@
-# Cogentic CLI
+# cogenticlink
 
-CLI for interacting with CogenticLab Tool Library API.
+CLI for interacting with the [CogenticLab Tool Library API](https://link.cogenticlab.io).  
+Manage named API libraries, browse available tools, and execute tool calls – all from the command line.
 
-## Setup
+[![npm version](https://img.shields.io/npm/v/cogenticlink.svg)](https://www.npmjs.com/package/cogenticlink)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Manage named libraries (API tokens):
+## Features
+
+- 🔐 **Library management** – store multiple API tokens with optional descriptions.
+- 📁 **Browse categories** – list all tool categories for a library.
+- 🔧 **List tools** – see available tools and their tags in a category.
+- 📖 **Describe tool** – view description and input schema (JSON) for any tool.
+- ⚡ **Call tool** – execute tools with JSON parameters.
+- 🧩 **No default library** – always specify which library to use, no ambiguity.
+
+## Installation
+
+### Global install (recommended for frequent use)
+```bash
+npm install -g cogenticlink
+```
+
+### Run with npx (no installation)
 
 ```bash
-# Set a library (two equivalent forms)
-cogentic libraries set myhub=abc123 "My Cogentic Hub"
-cogentic libraries set myhub abc123 "My Cogentic Hub"
-
-# Set as default
-cogentic libraries default myhub
-
-# List libraries
-cogentic libraries list
+npx cogenticlink <command>
 ```
+
+### Configuration
+
+Libraries are stored in ~/.cogenticlab/link/config.json:
+
+```json
+{
+  "libraries": {
+    "myhub": {
+      "token": "your-api-token",
+      "description": "My Cogentic Hub"
+    }
+  }
+}
+```
+You manage libraries with the cogenticlink libraries subcommands – no manual file editing needed.
 
 ## Commands
 
 ### Library Management
 
-```bash
-cogentic libraries set <name=token> [description]
-cogentic libraries get [name]
-cogentic libraries remove <name>
-cogentic libraries list
-cogentic libraries default [name]
-```
+|Command|Description|
+|-|-|
+|cogenticlink libraries|List all libraries (markdown format)|
+|cogenticlink libraries set <name> <token> [description]	|Add or update a library|
+|cogenticlink libraries get <name>|	Show token and description for a library|
+|cogenticlink libraries remove <name>|Delete a library|
+|cogenticlink libraries list|Plain‑text list of libraries (alternative)|
 
-### Tool Operations
+### Tool Operations (all require <library> as first argument)
 
-All tool commands accept --library <name> to use a specific library; otherwise the default library is used.
-
-```bash
-# List categories
-cogentic categories [--library myhub]
-
-# List tools
-cogentic list [category] [--library myhub]
-
-# Describe a tool
-cogentic describe <tool> [--library myhub]
-
-# Call a tool
-cogentic call <tool> --params '{"key":"value"}' [--library myhub]
-```
-
+|Command|Description|
+|-|-|
+|cogenticlink categories <library>|Fetch all tool categories (JSON)|
+|cogenticlink list <library> [category]|List tools in a category (default: All Tools). Output is Markdown.
+|cogenticlink describe <library> <tool>|Show tool description and input schema (Markdown)
+|cogenticlink call <library> <tool> [parameters]|Execute tool with optional JSON parameters (default {})
 ### Examples
 
+1. Add a library
+
 ```bash
-# Set up library
-cogentic libraries set prod=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 "Production hub"
-cogentic libraries default prod
-
-# Use tools
-cogentic categories
-cogentic list "Database"
-cogentic describe sql_query
-cogentic call sql_query --params '{"query":"SELECT * FROM users"}'
-
-# Use another library temporarily
-cogentic categories --library staging
+cogenticlink libraries set prod eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 "Production hub"
 ```
+2. List libraries
+
+```bash
+cogenticlink libraries
+```
+Output:
+
+```markdown
+# Tool Libraries
+- prod: Production hub
+- staging
+```
+3. See tool categories
+```bash
+cogenticlink categories prod
+```
+4. List tools in a category
+
+```bash
+cogenticlink list prod "Database Tools"
+```
+5. Describe a tool
+
+```bash
+cogenticlink describe prod sql_query
+```
+6. Call a tool (with parameters)
+
+```bash
+cogenticlink call prod sql_query '{"query":"SELECT * FROM users"}'
+```
+## Help
+
+### Display general help:
+
+```bash
+cogenticlink --help
+```
+### Help for a specific command:
+
+```bash
+cogenticlink help libraries set
+cogenticlink help call
+```
+## Requirements
+
+- Node.js 18 or higher
+= An API token from Cogentic Hub
+## Troubleshooting
+
+|Problem|Solution|
+|-|-|
+|Library not found|Run cogenticlink libraries to see existing names.
+|Invalid token|Re‑set the library with the correct token.
+|Tool not found|Use cogenticlink list <library> to verify the tool name.
+|Invalid JSON in parameters|Ensure parameters are valid JSON (use single quotes around the string).
+
+## License
+
+MIT

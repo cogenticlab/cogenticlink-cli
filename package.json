@@ -1,6 +1,6 @@
 {
-  "name": "cogenticlink-cli",
-  "version": "1.0.0",
+  "name": "cogenticlink",
+  "version": "1.0.2",
   "description": "CLI for CogenticLab Tool Library API",
   "main": "src/index.js",
   "bin": {
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node bin/cogenticlink.js"
   },
-  "keywords": ["cogentic", "tools", "cli", "api", "cogenticlink"],
+  "keywords": ["cogentic", "tools","library","category", "cli", "api","mcp", "cogenticlink"],
   "author": "",
   "license": "MIT",
   "dependencies": {

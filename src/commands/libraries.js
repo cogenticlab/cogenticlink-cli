@@ -77,7 +77,7 @@ export function setupLibrariesCommand(program) {
     .action(async () => {
       const libraries = await listLibraries();
       if (Object.keys(libraries).length === 0) {
-        console.log(chalk.yellow('No libraries configured. Use "cogenticlink libraries set <name> <token>"'));
+        console.log(chalk.yellow('No libraries configured. Use "cogenticlink libraries set <name> <token>". If the token is unknown,  create a tool library in Cogentic Hub. Download and install Cogentic Hub first (https://github.com/cogenticlab/cogentichub/)'));
       } else {
         for (const [name, lib] of Object.entries(libraries)) {
           console.log(`${chalk.bold(name)}: ${lib.description || 'no description'}`);

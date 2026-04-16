@@ -3,18 +3,22 @@ name: connect-tool-library
 description: Interact with remote tool libraries cogenticlink CLI. Use this skill when you need to manage API libraries (tokens), browse available tools, and execute tool calls.
 metadata:
   openclaw:
+    homepage: https://www.npmjs.com/package/@cogenticlab/cogenticlink
+    emoji: 📋
     requires:
       bins:
-        - cogenticlink
+        - node
+        - npx
       config:
-        - ~/.cogenticlab/config.json
+        - ~/.cogenticlab/link/config.json
+    install:
+      - kind: node
+        package: "@cogenticlab/cogenticlink"
+        bins:
+          - cogenticlink
 ---
 
 # Connect Tool Library Skill (via cogenticlink CLI)
-
-## Prerequisites
-
-- Install the `cogenticlink` CLI globally: `npm install -g cogenticlink-cli` or run via `npx cogenticlink-cli` (the skill will use the command as available).
 
 ## Managing Tool Libraries (Tokens)
 
@@ -32,20 +36,20 @@ All tool commands require the library name as a positional argument.
 
 1. Fetch Tool Categories (markdown output): `cogenticlink categories <library>`. Returns a list of categories.
 
-2. Fetch Tool List (markdown output): `cogenticlink list <library>`. If category is omitted, defaults to All Tools.
+2. Fetch Tool List of Category (markdown output): `cogenticlink list <library>`. If category is omitted, defaults to All Tools.
 
 3. Obtain Tool Description & Input Schema: `cogenticlink describe <library> <tool>`. Returns Markdown containing the tool's description and JSON schema for parameters.
 
-4. Call a Tool: `cogenticlink call <library> <tool> [parameters]`. parameters is an optional JSON string (default "{}"). Successful responses return JSON with a content array. Errors return isError: true with details in content.
+4. Call a Tool: `cogenticlink call <library> <tool> [parameters]`. parameters is an optional JSON object (default {}). Successful responses return JSON with a content array. Errors return isError: true with details in content.
 
-## Workflow for the Agent
+## Workflow
 
-1. Check/Create Library – If no library exists, instruct the user to set one: `cogenticlink libraries set <name> <token> [description]`. If the token is unknown, ask the user to create a tool library in Cogentic Hub. Download and install Cogentic Hub first (https://github.com/cogenticlab/cogentichub/)`
-
-2. Fetch Tool Categories – Run cogenticlink categories <library> to see available categories. If none selected, use All Tools.
-3. Fetch Tool List – Run cogenticlink list <library> [category] to see tools and their tags.
-4. Obtain Tool Description (optional) – Run cogenticlink describe <library> <tool> to understand required parameters.
-5. Call Tool – Run cogenticlink call <library> <tool> '<json-params>' to execute.
+1. **Check/Create Library** – If no library exists, instruct the user to set one: `cogenticlink libraries set <name> <token> [description]`. If the token is unknown, ask the user to create a tool library in Cogentic Hub.
+2. **Fetch Tool Categories** – Run `cogenticlink categories <library>` to see available categories. 
+3. **Select a category**, If none selected, use `All Tools` category.
+4. **Fetch Tool List from Selected Category** – Run `cogenticlink list <library> <category>` to see tools and their tags.
+5. Obtain Tool Description (optional) – Run `cogenticlink describe <library> <tool>` to understand required parameters.
+6. **Call Tool** – Run `cogenticlink call <library> <tool> '<json-params>'` to execute.
 
 
 ## Troubleshooting with the CLI

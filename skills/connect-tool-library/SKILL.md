@@ -13,7 +13,7 @@ metadata:
         - ~/.cogenticlab/link/config.json
     install:
       - kind: node
-        package: "@cogenticlab/cogenticlink"
+        package: "cogenticlink"
         bins:
           - cogenticlink
 ---

@@ -5,7 +5,6 @@ Manage named API libraries, browse available tools, and execute tool calls – a
 
 [![npm version](https://img.shields.io/npm/v/cogenticlink.svg)](https://www.npmjs.com/package/cogenticlink)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 ## Features
 
 - 🔐 **Library management** – store multiple API tokens with optional descriptions.
@@ -23,7 +22,6 @@ npm install -g cogenticlink
 ```
 
 ### Run with npx (no installation)
-
 ```bash
 npx cogenticlink <command>
 ```
@@ -31,7 +29,6 @@ npx cogenticlink <command>
 ### Configuration
 
 Libraries are stored in ~/.cogenticlab/link/config.json:
-
 ```json
 {
   "libraries": {
@@ -61,23 +58,21 @@ You manage libraries with the cogenticlink libraries subcommands – no manual f
 |Command|Description|
 |-|-|
 |cogenticlink categories <library>|Fetch all tool categories (JSON)|
-|cogenticlink list <library> [category]|List tools in a category (default: All Tools). Output is Markdown.
+|cogenticlink list <library> <category>|List tools in a category (default: All Tools). Output is Markdown.
 |cogenticlink describe <library> <tool>|Show tool description and input schema (Markdown)
 |cogenticlink call <library> <tool> [parameters]|Execute tool with optional JSON parameters (default {})
+
 ### Examples
 
 1. Add a library
-
 ```bash
 cogenticlink libraries set prod eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 "Production hub"
 ```
 2. List libraries
-
 ```bash
 cogenticlink libraries
 ```
 Output:
-
 ```markdown
 # Tool Libraries
 - prod: Production hub
@@ -88,37 +83,34 @@ Output:
 cogenticlink categories prod
 ```
 4. List tools in a category
-
 ```bash
 cogenticlink list prod "Database Tools"
 ```
 5. Describe a tool
-
 ```bash
 cogenticlink describe prod sql_query
 ```
 6. Call a tool (with parameters)
-
 ```bash
 cogenticlink call prod sql_query '{"query":"SELECT * FROM users"}'
 ```
+
 ## Help
 
 ### Display general help:
-
 ```bash
 cogenticlink --help
 ```
 ### Help for a specific command:
-
 ```bash
 cogenticlink help libraries set
 cogenticlink help call
 ```
-## Requirements
 
+## Requirements
 - Node.js 18 or higher
-= An API token from Cogentic Hub
+- An API token from Cogentic Hub
+
 ## Troubleshooting
 
 |Problem|Solution|

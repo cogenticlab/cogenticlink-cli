@@ -4,13 +4,12 @@ import { getLibraryToken } from '../libraries.js';
 
 export function categoriesCommand(program) {
   program
-    .command('categories')
-    .description('Fetch all tool categories')
-    .requiredOption('-l, --library <name>', 'Library name (required)')
-    .action(async (options) => {
-      const token = await getLibraryToken(options.library);
+    .command('categories <library>')
+    .description('Fetch all tool categories for a specific library')
+    .action(async (library) => {
+      const token = await getLibraryToken(library);
       if (!token) {
-        console.error(chalk.red(`Error: Library "${options.library}" not found or has no token.`));
+        console.error(chalk.red(`Error: Library "${library}" not found or has no token.`));
         process.exit(1);
       }
 

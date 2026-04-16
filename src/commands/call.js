@@ -4,14 +4,12 @@ import { getLibraryToken } from '../libraries.js';
 
 export function callCommand(program) {
   program
-    .command('call <tool>')
-    .description('Execute a tool with parameters (JSON string)')
-    .requiredOption('-l, --library <name>', 'Library name (required)')
-    .option('-p, --params <json>', 'Parameters as JSON string', '{}')
-    .action(async (tool, options) => {
-      const token = await getLibraryToken(options.library);
+    .command('call <library> <tool> [parameters]')
+    .description('Execute a tool from a library with parameters (JSON string)')
+    .action(async (library, tool, options) => {
+      const token = await getLibraryToken(library);
       if (!token) {
-        console.error(chalk.red(`Error: Library "${options.library}" not found or has no token.`));
+        console.error(chalk.red(`Error: Library "${library}" not found or has no token.`));
         process.exit(1);
       }
 

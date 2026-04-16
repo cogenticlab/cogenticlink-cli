@@ -4,13 +4,12 @@ import { getLibraryToken } from '../libraries.js';
 
 export function describeCommand(program) {
   program
-    .command('describe <tool>')
-    .description('Get description and input schema for a tool')
-    .requiredOption('-l, --library <name>', 'Library name (required)')
-    .action(async (tool, options) => {
-      const token = await getLibraryToken(options.library);
+    .command('describe <library> <tool>')
+    .description('Get description and input schema for a tool from a library')
+    .action(async (library, tool) => {
+      const token = await getLibraryToken(library);
       if (!token) {
-        console.error(chalk.red(`Error: Library "${options.library}" not found or has no token.`));
+        console.error(chalk.red(`Error: Library "${library}" not found or has no token.`));
         process.exit(1);
       }
 

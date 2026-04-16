@@ -16,7 +16,6 @@ export function categoriesCommand(program) {
 
       try {
         const categories = await fetchCategories(token);
-        console.log(chalk.bold('\n📁 Tool Categories:\n'));
         if (Array.isArray(categories)) {
           categories.forEach(cat => console.log(`  - ${cat}`));
         } else {

@@ -25,7 +25,6 @@ export function callCommand(program) {
 
       try {
         const result = await callTool(token, tool, params);
-        console.log(chalk.bold(`\n⚙️  Calling tool: ${tool}\n`));
         console.log(JSON.stringify(result, null, 2));
       } catch (error) {
         console.error(chalk.red(`Request failed: ${error.message}`));

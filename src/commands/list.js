@@ -16,7 +16,6 @@ export function listCommand(program) {
 
       try {
         const result = await fetchTools(token, category);
-        console.log(chalk.bold(`\n🔧 Tools in "${category}":\n`));
         console.log(result);
       } catch (error) {
         console.error(chalk.red(`Request failed: ${error.message}`));

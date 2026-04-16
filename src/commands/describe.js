@@ -16,7 +16,6 @@ export function describeCommand(program) {
 
       try {
         const description = await fetchToolDescription(token, tool);
-        console.log(chalk.bold(`\n📖 Tool: ${tool}\n`));
         console.log(description);
       } catch (error) {
         console.error(chalk.red(`Request failed: ${error.message}`));

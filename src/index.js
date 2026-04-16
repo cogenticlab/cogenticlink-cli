@@ -2,10 +2,7 @@ export {
   setLibrary,
   removeLibrary,
   listLibraries,
-  setDefaultLibrary,
-  getDefaultLibraryName,
   getLibraryToken,
-  getTokenForLibrary,
 } from './libraries.js';
 
 export { fetchCategories, fetchTools, fetchToolDescription, callTool } from './api.js';

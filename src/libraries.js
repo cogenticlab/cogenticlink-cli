@@ -10,11 +10,17 @@ export async function ensureConfigDir() {
 }
 
 async function readConfig() {
+  await ensureConfigDir(); // Ensure directory exists before reading
   try {
     const content = await fs.readFile(CONFIG_FILE, 'utf-8');
     return JSON.parse(content);
   } catch (error) {
-    if (error.code !== 'ENOENT') return { libraries: {}, default: null };
+    if (error.code === 'ENOENT') {
+      // File doesn't exist, create default config
+      const defaultConfig = { libraries: {} };
+      await fs.writeFile(CONFIG_FILE, JSON.stringify(defaultConfig, null, 2), 'utf-8');
+      return defaultConfig;
+    }
     throw error;
   }
 }
@@ -30,22 +36,6 @@ export async function getLibraryToken(libraryName) {
   return lib ? lib.token : null;
 }
 
-export async function getDefaultLibrary() {
-  const config = await readConfig();
-  return config.default || null;
-}
-
-export async function getTokenForLibrary(libraryName) {
-  if (libraryName) {
-    return await getLibraryToken(libraryName);
-  }
-  const defaultLib = await getDefaultLibrary();
-  if (defaultLib) {
-    return await getLibraryToken(defaultLib);
-  }
-  return null;
-}
-
 export async function setLibrary(libraryName, token, description = '') {
   const config = await readConfig();
   if (!config.libraries) config.libraries = {};
@@ -57,9 +47,6 @@ export async function removeLibrary(libraryName) {
   const config = await readConfig();
   if (config.libraries && config.libraries[libraryName]) {
     delete config.libraries[libraryName];
-    if (config.default === libraryName) {
-      config.default = null;
-    }
     await writeConfig(config);
     return true;
   }
@@ -69,18 +56,4 @@ export async function removeLibrary(libraryName) {
 export async function listLibraries() {
   const config = await readConfig();
   return config.libraries || {};
-}
-
-export async function setDefaultLibrary(libraryName) {
-  const config = await readConfig();
-  if (!config.libraries || !config.libraries[libraryName]) {
-    throw new Error(`Library "${libraryName}" does not exist`);
-  }
-  config.default = libraryName;
-  await writeConfig(config);
-}
-
-export async function getDefaultLibraryName() {
-  const config = await readConfig();
-  return config.default;
 }

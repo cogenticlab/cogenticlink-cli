@@ -1,16 +1,16 @@
 import chalk from 'chalk';
 import { fetchCategories } from '../api.js';
-import { getTokenForLibrary } from '../libraries.js';
+import { getLibraryToken } from '../libraries.js';
 
 export function categoriesCommand(program) {
   program
     .command('categories')
     .description('Fetch all tool categories')
-    .option('-l, --library <name>', 'Use a specific library (defaults to default library)')
+    .requiredOption('-l, --library <name>', 'Library name (required)')
     .action(async (options) => {
-      const token = await getTokenForLibrary(options.library);
+      const token = await getLibraryToken(options.library);
       if (!token) {
-        console.error(chalk.red('Error: No API token available. Set a library with "cogenticlink libraries set" and optionally a default.'));
+        console.error(chalk.red(`Error: Library "${options.library}" not found or has no token.`));
         process.exit(1);
       }
 

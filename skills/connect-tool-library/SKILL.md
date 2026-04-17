@@ -1,10 +1,8 @@
 ---
 name: connect-tool-library
-description: Interact with remote tool libraries via cogenticlink CLI. Use this skill when you need to manage Tool libraries (tokens), browse available tools, and execute tool calls.
+description: Interact with remote CLI, API, and MCP tools via the CogenticLink CLI.Progressive disclosure from Tool Library down to Tool via categories. Use this skill when you need to manage Tool libraries (tokens), browse available tools, and execute tool calls.
 metadata:
-  openclaw:
     homepage: https://www.npmjs.com/package/cogenticlink
-    emoji: 📋
     requires:
       bins:
         - node
@@ -36,7 +34,7 @@ All tool commands require the library name as a positional argument.
 
 1. Fetch Tool Categories (markdown output): `cogenticlink categories <library>`. Returns a list of categories.
 
-2. Fetch Tool List of Category (markdown output): `cogenticlink list <library>`. If category is omitted, defaults to All Tools.
+2. Fetch Tool List of Category (markdown output): `cogenticlink tools <library> <category>`. If category is omitted, defaults to All Tools.
 
 3. Obtain Tool Description & Input Schema: `cogenticlink describe <library> <tool>`. Returns Markdown containing the tool's description and JSON schema for parameters.
 

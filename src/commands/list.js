@@ -4,7 +4,8 @@ import { getLibraryToken } from '../libraries.js';
 
 export function listCommand(program) {
   program
-    .command('list <library> <category>')
+    .command('tools <library> <category>')
+    .alias('list')
     .description('List tools in a category for a library (default category: All Tools)')
     .action(async (library, category = 'All Tools') => {
       const token = await getLibraryToken(library);

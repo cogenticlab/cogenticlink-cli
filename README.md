@@ -1,7 +1,10 @@
 # cogenticlink
 
 CLI for interacting with the [CogenticLab Tool Library API](https://link.cogenticlab.io).  
-Manage named API libraries, browse available tools, and execute tool calls – all from the command line.
+
+Progressive disclosure is achieved through the hierarchy of Tool Library → Tool Category → Tool.
+
+Manage named Tool libraries, browse available tools, and execute tool calls – all from the command line.
 
 [![npm version](https://img.shields.io/npm/v/cogenticlink.svg)](https://www.npmjs.com/package/cogenticlink)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -59,7 +62,7 @@ You manage libraries with the cogenticlink libraries subcommands – no manual f
 | Command                                             | Description                                                        |
 |-----------------------------------------------------|--------------------------------------------------------------------|
 | csogenticlink categories \<library\>                | Fetch all tool categories (JSON)                                   |
-| cogenticlink list \<library\> \<category\>          | List tools in a category (default: All Tools). Output is Markdown. |
+| cogenticlink tools \<library\> \<category\>          | List tools in a category (default: All Tools). Output is Markdown. |
 | cogenticlink describe \<library\> <tool>            | Show tool description and input schema (Markdown)                  |
 | cogenticlink call \<library\> \<tool\> [parameters] | Execute tool with optional JSON parameters (default {})            |
 
@@ -85,7 +88,7 @@ cogenticlink categories prod
 ```
 4. List tools in a category
 ```bash
-cogenticlink list prod "Database Tools"
+cogenticlink tools prod "Database Tools"
 ```
 5. Describe a tool
 ```bash
@@ -118,7 +121,7 @@ cogenticlink help call
 |----------------------------|-------------------------------------------------------------------------|
 | Library not found          | Run `cogenticlink libraries` to see existing names.                     |
 | Invalid token              | Re‑set the library with the correct token.                              |
-| Tool not found             | Use `cogenticlink list \<library\>` to verify the tool name.            |
+| Tool not found             | Use `cogenticlink tools \<library\>` to verify the tool name.            |
 | Invalid JSON in parameters | Ensure parameters are valid JSON (use single quotes around the string). |
 
 ## License

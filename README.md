@@ -1,6 +1,6 @@
 # cogenticlink
 
-CLI for interacting with the [CogenticLab Tool Library API](https://link.cogenticlab.io).  
+CLI for interacting with the [CogenticLab Tool Library API](https://link.cogenticlab.io).
 
 Progressive disclosure is achieved through the hierarchy of Tool Library → Tool Category → Tool.
 
@@ -52,19 +52,19 @@ You manage libraries with the cogenticlink libraries subcommands – no manual f
 | Command                                                   | Description                                |
 |-----------------------------------------------------------|--------------------------------------------|
 | cogenticlink libraries                                    | List all libraries (markdown format)       |
-| cogenticlink libraries set \<name\> <token> [description] | Add or update a library                    |
-| cogenticlink libraries get \<name\>                       | 	Show token and description for a library  |
-| cogenticlink libraries remove \<name\>                    | Delete a library                           |
-| cogenticlink libraries list                               | Plain‑text list of libraries (alternative) |
+| `cogenticlink libraries set <name> <token> [description]` | Add or update a library                    |
+| `cogenticlink libraries get <name>`                       | 	Show token and description for a library  |
+| `cogenticlink libraries remove <name>`                    | Delete a library                           |
+| `cogenticlink libraries list`                               | Plain‑text list of libraries (alternative) |
 
-### Tool Operations (all require \<library\> as first argument)
+### Tool Operations (all require `<library>` as first argument)
 
 | Command                                             | Description                                                        |
 |-----------------------------------------------------|--------------------------------------------------------------------|
-| csogenticlink categories \<library\>                | Fetch all tool categories (JSON)                                   |
-| cogenticlink tools \<library\> \<category\>          | List tools in a category (default: All Tools). Output is Markdown. |
-| cogenticlink describe \<library\> <tool>            | Show tool description and input schema (Markdown)                  |
-| cogenticlink call \<library\> \<tool\> [parameters] | Execute tool with optional JSON parameters (default {})            |
+| `cogenticlink categories <library>`                | Fetch all tool categories (JSON)                                   |
+| `cogenticlink tools <library> <category>`          | List tools in a category (default: All Tools). Output is Markdown. |
+| `cogenticlink describe <library> <tool>`            | Show tool description and input schema (Markdown)                  |
+| `cogenticlink call <library> <tool> [parameters]` | Execute tool with optional JSON parameters (default {})            |
 
 ### Examples
 
@@ -121,7 +121,7 @@ cogenticlink help call
 |----------------------------|-------------------------------------------------------------------------|
 | Library not found          | Run `cogenticlink libraries` to see existing names.                     |
 | Invalid token              | Re‑set the library with the correct token.                              |
-| Tool not found             | Use `cogenticlink tools \<library\>` to verify the tool name.            |
+| Tool not found             | Use `cogenticlink tools <library>` to verify the tool name.            |
 | Invalid JSON in parameters | Ensure parameters are valid JSON (use single quotes around the string). |
 
 ## License

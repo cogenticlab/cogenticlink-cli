@@ -54,4 +54,4 @@ All tool commands require the library name as a positional argument.
 1. Library not found – Run `cogenticlink libraries` to list existing libraries.
 2. Invalid token – Re‑set the library with the correct token.
 3. Tool not found – Verify the tool name using `cogenticlink tools '<library>' 'All Tools'`.
-4. Invalid parameters – Check the tool's input schema with `cogenticlink describe <library> <tool>`.
+4. Invalid parameters – Check the tool's input schema with `cogenticlink describe '<library>' '<tool>'`.

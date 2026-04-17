@@ -55,49 +55,49 @@ You manage libraries with the cogenticlink libraries subcommands – no manual f
 | `cogenticlink libraries set <name> <token> [description]` | Add or update a library                    |
 | `cogenticlink libraries get <name>`                       | 	Show token and description for a library  |
 | `cogenticlink libraries remove <name>`                    | Delete a library                           |
-| `cogenticlink libraries list`                               | Plain‑text list of libraries (alternative) |
+| `cogenticlink libraries list`                             | Plain‑text list of libraries (alternative) |
 
 ### Tool Operations (all require `<library>` as first argument)
 
 | Command                                             | Description                                                        |
 |-----------------------------------------------------|--------------------------------------------------------------------|
-| `cogenticlink categories <library>`                | Fetch all tool categories (JSON)                                   |
-| `cogenticlink tools <library> <category>`          | List tools in a category (default: All Tools). Output is Markdown. |
+| `cogenticlink categories <library>`                 | Fetch all tool categories (JSON)                                   |
+| `cogenticlink tools <library> <category>`           | List tools in a category (default: All Tools). Output is Markdown. |
 | `cogenticlink describe <library> <tool>`            | Show tool description and input schema (Markdown)                  |
-| `cogenticlink call <library> <tool> [parameters]` | Execute tool with optional JSON parameters (default {})            |
+| `cogenticlink call <library> <tool> [parameters]`   | Execute tool with optional JSON parameters (default {})            |
 
 ### Examples
 
 1. Add a library
-```bash
-cogenticlink libraries set prod eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 "Production hub"
-```
+    ```bash
+    cogenticlink libraries set prod eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 "Production hub"
+    ```
 2. List libraries
-```bash
-cogenticlink libraries
-```
-Output:
-```markdown
-# Tool Libraries
-- prod: Production hub
-- staging
-```
+    ```bash
+    cogenticlink libraries
+    ```
+    Output:
+    ```markdown
+    # Tool Libraries
+    - prod: Production hub
+    - staging
+    ```
 3. See tool categories
-```bash
-cogenticlink categories prod
-```
+    ```bash
+    cogenticlink categories prod
+    ```
 4. List tools in a category
-```bash
-cogenticlink tools prod "Database Tools"
-```
+    ```bash
+    cogenticlink tools prod "Database Tools"
+    ```
 5. Describe a tool
-```bash
-cogenticlink describe prod sql_query
-```
+    ```bash
+    cogenticlink describe prod sql_query
+    ```
 6. Call a tool (with parameters)
-```bash
-cogenticlink call prod sql_query '{"query":"SELECT * FROM users"}'
-```
+    ```bash
+    cogenticlink call prod sql_query '{"query":"SELECT * FROM users"}'
+    ```
 
 ## Help
 
@@ -121,7 +121,7 @@ cogenticlink help call
 |----------------------------|-------------------------------------------------------------------------|
 | Library not found          | Run `cogenticlink libraries` to see existing names.                     |
 | Invalid token              | Re‑set the library with the correct token.                              |
-| Tool not found             | Use `cogenticlink tools <library>` to verify the tool name.            |
+| Tool not found             | Use `cogenticlink tools <library>` to verify the tool name.             |
 | Invalid JSON in parameters | Ensure parameters are valid JSON (use single quotes around the string). |
 
 ## License

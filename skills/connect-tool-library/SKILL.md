@@ -24,7 +24,7 @@ Before using any tool, you must add a library (API token) using the cogenticlink
 
 1. Set a library (name, token, optional description): `cogenticlink libraries set <name> <token> [description]`
 
-2. List all libraries (markdown output): `cogenticlink libraries`
+2. List all libraries (Markdown output): `cogenticlink libraries`
 
 3. Remove a library: `cogenticlink libraries remove <name>`
 
@@ -32,9 +32,9 @@ Before using any tool, you must add a library (API token) using the cogenticlink
 
 All tool commands require the library name as a positional argument.
 
-1. **Fetch Tool Categories** (markdown output): `cogenticlink categories '<library>'`. Returns a list of categories.
+1. **Fetch Tool Categories** (Markdown output): `cogenticlink categories '<library>'`. Returns a list of categories.
 
-2. **Fetch Tool List of Category** (markdown output): `cogenticlink tools '<library>' '<category>'`. If category is omitted, defaults to All Tools.
+2. **Fetch Tool List of Category** (Markdown output): `cogenticlink tools '<library>' '<category>'`. If category is omitted, defaults to All Tools.
 
 3. **Obtain Tool Description & Input Schema**: `cogenticlink describe '<library>' '<tool>'`. Returns Markdown containing the tool's description and JSON schema for parameters.
 
@@ -46,7 +46,7 @@ All tool commands require the library name as a positional argument.
 2. **Fetch Tool Categories**
 3. **Select a category**, If none selected, use `'All Tools'` category.
 4. **Fetch Tool List from Selected Category**
-5. **Obtain Tool Description & Input Scheman**
+5. **Obtain Tool Description & Input Schema**
 6. **Call Tool**
 
 
